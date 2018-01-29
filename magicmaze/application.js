@@ -23,7 +23,7 @@ MAGICMAZE.setColorStatus = function(t){
 	var timeLeft = ((typeof t == 'number') ? t : 180);
 	var newClass = 'safe';
 	
-	if (d > 60){
+	if (timeLeft > 60){
 		newClass = 'safe';
 	} else if (60 >= timeLeft > 30) {
 		newClass = 'warning';
