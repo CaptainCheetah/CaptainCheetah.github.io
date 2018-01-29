@@ -2,29 +2,14 @@ var MAGICMAZE = {};
 
 // voice variables
 MAGICMAZE.SPEECH = {};
-// MAGICMAZE.SPEECH.repeatMsg = '';
-MAGICMAZE.SPEECH.talk = function(params){ // s, f, n, callback, callbackvar
-	console.log('MAGICMAZE.SPEECH.talk');
-	console.log(params);
-
-	// var wait = ((typeof params.w == 'undefined') ? 500 : params.w );
+MAGICMAZE.SPEECH.talk = function(params){
 
 	msg = new SpeechSynthesisUtterance();
 		msg.volume = 1; // 0 to 1
 		msg.rate = 1;
 		msg.pitch = 1;
 		msg.voice = MAGICMAZE.SPEECH.voice;
-
-
-/*
-		msg.onend = function(){
-			window.speechSynthesis.pause();
-			window.setTimeout(function() { window.speechSynthesis.resume() }, wait);
-			if (typeof params.callback != 'undefined') {
-				params.callback(params.callbackvar);
-			}
-		}
-*/
+	
 	msg.text = (( typeof params.s != 'undefined' ) ? params.s : '' );
 
 	console.log(msg);
@@ -42,7 +27,7 @@ MAGICMAZE.timer = function(params){
 		$('#start').prop('disabled',true);
 
 		MAGICMAZE.duration = ((typeof params != 'undefined' && typeof params.duration != 'undefined') ? params.duration : MAGICMAZE.interval);
-		document.getElementById("timer").innerHTML = ((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
+		$('#timer').html((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
 
 		MAGICMAZE.SPEECH.talk({'s':
 			(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60) ? ((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60) + ' minutes': '' ) +
@@ -57,7 +42,6 @@ MAGICMAZE.timer = function(params){
 		}
 
 		MAGICMAZE.currentTimer = setInterval(function() {
-			// document.getElementById("timer").innerHTML = ((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
 			if (MAGICMAZE.duration == 0) {
 				window.speechSynthesis.cancel();
 				$('#flip').prop('disabled',true);
@@ -66,7 +50,7 @@ MAGICMAZE.timer = function(params){
 				MAGICMAZE.SPEECH.talk({'s': 'Game over'});
 			} else {
 				MAGICMAZE.duration--;
-				document.getElementById("timer").innerHTML = ((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
+				$('#timer').html((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
 				if ([30,20,10,5].indexOf(MAGICMAZE.duration) > -1){
 					window.speechSynthesis.cancel();
 					MAGICMAZE.SPEECH.talk({'s': MAGICMAZE.duration + ' seconds remaining'});
@@ -86,7 +70,7 @@ MAGICMAZE.resetTimer = function(){
 	clearInterval(MAGICMAZE.currentTimer);
 	MAGICMAZE.currentTimer = null;
 	MAGICMAZE.duration = MAGICMAZE.interval;
-	document.getElementById("timer").innerHTML = ((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
+	$('#timer').html((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
 }
 
 $(document).ready(function(){
