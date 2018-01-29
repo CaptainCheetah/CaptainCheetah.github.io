@@ -24,8 +24,6 @@ animation: AnimationName 5s ease infinite;
 body {
 	text-align: center;
 	font: 1.2em "Fira Sans", sans-serif;
-	background-color: #000;
-	color: #FFF;
 }
 
 #timer{
@@ -39,8 +37,8 @@ button {
 	font-size: 150%;
 	margin: 10px;
 	-webkit-border-radius: 15;
-  -moz-border-radius: 15;
-  border-radius: 15px;
+  	-moz-border-radius: 15;
+  	border-radius: 15px;
 	padding: 15px;
 	background-color: #FFF;
 	color: #000;
