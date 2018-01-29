@@ -27,7 +27,7 @@ MAGICMAZE.timer = function(params){
 		$('#start').prop('disabled',true);
 
 		MAGICMAZE.duration = ((typeof params != 'undefined' && typeof params.duration != 'undefined') ? params.duration : MAGICMAZE.interval);
-		$('#timer').html((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
+		$('#timer').html(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0'));
 
 		MAGICMAZE.SPEECH.talk({'s':
 			(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60) ? ((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60) + ' minutes': '' ) +
@@ -50,7 +50,7 @@ MAGICMAZE.timer = function(params){
 				MAGICMAZE.SPEECH.talk({'s': 'Game over'});
 			} else {
 				MAGICMAZE.duration--;
-				$('#timer').html((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
+				$('#timer').html(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0'));
 				if ([30,20,10,5].indexOf(MAGICMAZE.duration) > -1){
 					window.speechSynthesis.cancel();
 					MAGICMAZE.SPEECH.talk({'s': MAGICMAZE.duration + ' seconds remaining'});
@@ -70,7 +70,7 @@ MAGICMAZE.resetTimer = function(){
 	clearInterval(MAGICMAZE.currentTimer);
 	MAGICMAZE.currentTimer = null;
 	MAGICMAZE.duration = MAGICMAZE.interval;
-	$('#timer').html((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
+	$('#timer').html(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0'));
 }
 
 $(document).ready(function(){
