@@ -19,6 +19,22 @@ MAGICMAZE.currentTimer = null;
 MAGICMAZE.interval = 180;
 MAGICMAZE.duration = 180;
 
+MAGICMAZE.setColorStatus = function(d){
+	var newClass = 'safe';
+	
+	if (d > 60){
+	} else if (60 >= d > 30) {
+		newClass = 'safe';
+	} else if (30 >= d > 10) {
+		newClass = 'warning';
+	}else if (10 >= d > 5){
+		newClass = 'danger';
+	}else if (5 >= d){
+		newClass = 'critical';
+	}
+	$('body').removeClass().addClass(newClass);
+}
+
 MAGICMAZE.timer = function(params){
 		
 		window.speechSynthesis.cancel();
@@ -27,6 +43,7 @@ MAGICMAZE.timer = function(params){
 		$('#start').prop('disabled',true);
 
 		MAGICMAZE.duration = ((typeof params != 'undefined' && typeof params.duration != 'undefined') ? params.duration : MAGICMAZE.interval);
+		MAGICMAZE.setColorStatus(MAGICMAZE.duration);
 		$('#timer').html(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0'));
 
 		MAGICMAZE.SPEECH.talk({'s':
@@ -52,6 +69,7 @@ MAGICMAZE.timer = function(params){
 				MAGICMAZE.duration--;
 				$('#timer').html(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0'));
 				if ([30,20,10,5].indexOf(MAGICMAZE.duration) > -1){
+					MAGICMAZE.setColorStatus(MAGICMAZE.duration);
 					window.speechSynthesis.cancel();
 					MAGICMAZE.SPEECH.talk({'s': MAGICMAZE.duration + ' seconds remaining'});
 				}
