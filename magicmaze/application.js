@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 		$.each(window.speechSynthesis.getVoices(), function(idx, voice){
 			// console.log(voice.name);
-			if (voice.name == 'Google UK English Female'){ // 'Google UK English Male'){
+			if (voice.name.indexOf('Google UK English Female') != -1){ // 'Google UK English Male'){
 				window.speechSynthesis.onvoiceschanged = false;
 				MAGICMAZE.SPEECH.voice = voice;
 				MAGICMAZE.SPEECH.talk({'s': 'Welcome to the Magic Maze mall; for all your dungeoneering needs!'});
