@@ -68,6 +68,7 @@ MAGICMAZE.timer = function(params){
 				MAGICMAZE.duration--;
 				document.getElementById("timer").innerHTML = ((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
 				if ([30,20,10,5].indexOf(MAGICMAZE.duration) > -1){
+					window.speechSynthesis.cancel();
 					MAGICMAZE.SPEECH.talk({'s': MAGICMAZE.duration + ' seconds remaining'});
 				}
 			}
