@@ -19,17 +19,18 @@ MAGICMAZE.currentTimer = null;
 MAGICMAZE.interval = 180;
 MAGICMAZE.duration = 180;
 
-MAGICMAZE.setColorStatus = function(d){
+MAGICMAZE.setColorStatus = function(t){
+	var timeLeft = ((typeof t == 'number') ? t : 180);
 	var newClass = 'safe';
 	
 	if (d > 60){
-	} else if (60 >= d > 30) {
+	} else if (60 >= timeLeft > 30) {
 		newClass = 'safe';
-	} else if (30 >= d > 10) {
+	} else if (30 >= timeLeft > 10) {
 		newClass = 'warning';
-	}else if (10 >= d > 5){
+	}else if (10 >= timeLeft > 5){
 		newClass = 'danger';
-	}else if (5 >= d){
+	}else if (5 >= timeLeft){
 		newClass = 'critical';
 	}
 	$('body').removeClass().addClass(newClass);
