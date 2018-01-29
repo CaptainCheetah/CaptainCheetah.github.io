@@ -74,7 +74,7 @@ MAGICMAZE.resetTimer = function(){
 }
 
 MAGICMAZE.initVoice = function(s){
-	var speaker = (typeof s != 'undefined) ? : 'Google UK English Female';
+	var speaker = (typeof s != 'undefined) ? s : 'Google UK English Female';
 	$.each(window.speechSynthesis.getVoices(), function(idx, voice){
 		console.log(voice.name);
 		console.log(voice.name.indexOf('Google UK English Female'));
