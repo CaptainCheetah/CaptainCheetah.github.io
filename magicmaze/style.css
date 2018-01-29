@@ -3,10 +3,11 @@ body {
 	
 	text-align: center;
 	font: 1.2em "Fira Sans", sans-serif;
-/*	
+	
 	background: linear-gradient(180deg, #2fc864, #2fc864, #e4ea00, #f08a27, #f05858, #f05858);
 	background-size: 1200% 1200%;
 
+/*
 	-webkit-animation: AnimationName 5s ease infinite;
 	-moz-animation: AnimationName 5s ease infinite;
  	animation: AnimationName 5s ease infinite;
