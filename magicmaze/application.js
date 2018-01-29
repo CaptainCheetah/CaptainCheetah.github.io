@@ -20,7 +20,9 @@ MAGICMAZE.interval = 180;
 MAGICMAZE.duration = 180;
 
 MAGICMAZE.setColorStatus = function(t){
+	console.log('t :' + t);
 	var timeLeft = ((typeof t == 'number') ? t : 180);
+	console.log(timeLeft);
 	var newClass = 'safe';
 	
 	if (timeLeft > 60){
