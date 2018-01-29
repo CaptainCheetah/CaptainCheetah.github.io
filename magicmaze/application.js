@@ -3,7 +3,7 @@ var MAGICMAZE = {};
 // voice variables
 MAGICMAZE.SPEECH = {};
 MAGICMAZE.SPEECH.talk = function(params){
-
+	alert(MAGICMAZE.SPEECH.voice.name + " " + MAGICMAZE.SPEECH.voice.lang);
 	msg = new SpeechSynthesisUtterance();
 		msg.volume = 1; // 0 to 1
 		msg.rate = 1;
@@ -21,7 +21,7 @@ MAGICMAZE.interval = 180;
 MAGICMAZE.duration = 180;
 
 MAGICMAZE.timer = function(params){
-		alert(MAGICMAZE.SPEECH.voice.name + " " + MAGICMAZE.SPEECH.voice.lang);
+		
 		window.speechSynthesis.cancel();
 		$('#timer').css('color','#FFF');
 		$('#flip').prop('disabled',false);
