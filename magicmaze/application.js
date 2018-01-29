@@ -20,27 +20,18 @@ MAGICMAZE.interval = 180;
 MAGICMAZE.duration = 180;
 
 MAGICMAZE.setColorStatus = function(t){
-	console.log('t :' + t);
 	var timeLeft = ((typeof t == 'number') ? t : 180);
-	console.log(timeLeft);
 	var newClass = 'safe';
-	
-	console.log(timeLeft > 60);
-	console.log(60 >= timeLeft > 30);
-	console.log(30 >= timeLeft > 10);
-	console.log(10 >= timeLeft);
 	
 	if (timeLeft > 60){
 		newClass = 'safe';
-	} else if (60 >= timeLeft > 30) {
+	} else if (30 < timeLeft <= 60) {
 		newClass = 'warning';
-	} else if (30 >= timeLeft > 10) {
+	} else if (10 < timeLeft <= 30) {
 		newClass = 'danger';
-	} else if (10 >= timeLeft) {
+	} else if (timeLeft <= 10) {
 		newClass = 'critical';
 	}
-	console.log('status is: ' + newClass);
-	console.log("$('body').removeClass().addClass(newClass);");
 	$('body').removeClass().addClass(newClass);
 }
 
@@ -52,7 +43,6 @@ MAGICMAZE.timer = function(params){
 		$('#start').prop('disabled',true);
 
 		MAGICMAZE.duration = ((typeof params != 'undefined' && typeof params.duration != 'undefined') ? params.duration : MAGICMAZE.interval);
-		MAGICMAZE.setColorStatus(MAGICMAZE.duration);
 		$('#timer').html(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0'));
 
 		MAGICMAZE.SPEECH.talk({'s':
@@ -68,6 +58,7 @@ MAGICMAZE.timer = function(params){
 		}
 
 		MAGICMAZE.currentTimer = setInterval(function() {
+			MAGICMAZE.setColorStatus(MAGICMAZE.duration);
 			if (MAGICMAZE.duration == 0) {
 				window.speechSynthesis.cancel();
 				$('#flip').prop('disabled',true);
@@ -78,7 +69,6 @@ MAGICMAZE.timer = function(params){
 				MAGICMAZE.duration--;
 				$('#timer').html(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0'));
 				if ([30,20,10,5].indexOf(MAGICMAZE.duration) > -1){
-					MAGICMAZE.setColorStatus(MAGICMAZE.duration);
 					window.speechSynthesis.cancel();
 					MAGICMAZE.SPEECH.talk({'s': MAGICMAZE.duration + ' seconds remaining'});
 				}
