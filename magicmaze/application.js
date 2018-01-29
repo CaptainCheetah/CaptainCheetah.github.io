@@ -77,6 +77,7 @@ $(document).ready(function(){
   	
 	window.speechSynthesis.onvoiceschanged = function(){
 		$.each(window.speechSynthesis.getVoices(), function(idx, voice){
+			console.log(voice.name);
 			if (voice.name == 'Google UK English Female'){ // 'Google UK English Male'
 				window.speechSynthesis.onvoiceschanged = false;
 				MAGICMAZE.SPEECH.voice = voice;
