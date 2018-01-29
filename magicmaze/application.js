@@ -73,24 +73,16 @@ MAGICMAZE.resetTimer = function(){
 	$('#timer').html(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0'));
 }
 
-MAGICMAZE.initVoice = function(s){
-	var speaker = (typeof s != 'undefined') ? s : 'Google UK English Female';
-	$.each(window.speechSynthesis.getVoices(), function(idx, voice){
-		console.log(voice.name);
-		console.log(voice.name.indexOf('Google UK English Female'));
-		if (voice.name == speaker){ // 'Google UK English Male'){
-			window.speechSynthesis.onvoiceschanged = false;
-			MAGICMAZE.SPEECH.voice = voice;
-			MAGICMAZE.SPEECH.talk({'s': 'Welcome to the Magic Maze mall; for all your dungeoneering needs!'});
-			// MAGICMAZE.timer();
-		}
-	});
-}
-
 $(document).ready(function(){
-	MAGICMAZE.initVoice('Samantha');
-	if (speechSynthesis.onvoiceschanged !== undefined) {
-  		window.speechSynthesis.onvoiceschanged = MAGICMAZE.initVoice;
+  	
+	window.speechSynthesis.onvoiceschanged = function(){
+		$.each(window.speechSynthesis.getVoices(), function(idx, voice){
+			if (voice.name == 'Google UK English Female'){ // 'Google UK English Male'
+				window.speechSynthesis.onvoiceschanged = false;
+				MAGICMAZE.SPEECH.voice = voice;
+				MAGICMAZE.SPEECH.talk({'s': 'Welcome to the Magic Maze mall; for all your dungeoneering needs!'});
+			}
+		});
 	}
 	
 	window.onbeforeunload = function(){
