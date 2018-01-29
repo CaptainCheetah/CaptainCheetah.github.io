@@ -79,11 +79,11 @@ MAGICMAZE.initVoices = function(){
 	}
 	
 	$.each(window.speechSynthesis.getVoices(), function(idx, voice){
-		if (voice.name == 'Daniel'){ // 'Google UK English Male'
+		if (voice.lang == 'Daniel'){ // 'Google UK English Male'
 			window.speechSynthesis.onvoiceschanged = false;
 			MAGICMAZE.SPEECH.voice = voice;
 			MAGICMAZE.SPEECH.talk({'s': 'Welcome to the Magic Maze mall; for all your adventuring needs!'});
-			$('#start').prop('disabled',false);
+			return;
 		}
 	});
 }
