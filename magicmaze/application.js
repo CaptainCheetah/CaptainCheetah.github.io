@@ -63,7 +63,7 @@ MAGICMAZE.timer = function(params){
 				window.speechSynthesis.cancel();
 				$('#flip').prop('disabled',true);
 				clearInterval(MAGICMAZE.currentTimer);
-				$('#timer').css('color','#F00');
+				// $('#timer').css('color','#F00');
 				MAGICMAZE.SPEECH.talk({'s': 'Game over'});
 			} else {
 				MAGICMAZE.duration--;
@@ -81,6 +81,7 @@ MAGICMAZE.flipTimer = function(){
 }
 MAGICMAZE.resetTimer = function(){
 	window.speechSynthesis.cancel();
+	$('body').removeClass().addClass('safe');
 	$('#timer').css('color','#000');
 	$('#flip').prop('disabled',true);
 	$('#start').prop('disabled',false);
