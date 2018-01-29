@@ -22,7 +22,7 @@ MAGICMAZE.duration = 180;
 MAGICMAZE.timer = function(params){
 		
 		window.speechSynthesis.cancel();
-		$('#timer').css('color','#FFF');
+		$('#timer').css('color','#000');
 		$('#flip').prop('disabled',false);
 		$('#start').prop('disabled',true);
 
@@ -64,7 +64,7 @@ MAGICMAZE.flipTimer = function(){
 }
 MAGICMAZE.resetTimer = function(){
 	window.speechSynthesis.cancel();
-	$('#timer').css('color','#FFF');
+	$('#timer').css('color','#000');
 	$('#flip').prop('disabled',true);
 	$('#start').prop('disabled',false);
 	clearInterval(MAGICMAZE.currentTimer);
