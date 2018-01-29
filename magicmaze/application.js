@@ -21,7 +21,7 @@ MAGICMAZE.interval = 180;
 MAGICMAZE.duration = 180;
 
 MAGICMAZE.timer = function(params){
-		alert MAGICMAZE.SPEECH.voice;
+		alert MAGICMAZE.SPEECH.voice.name + " " + MAGICMAZE.SPEECH.voice.lang;
 		window.speechSynthesis.cancel();
 		$('#timer').css('color','#FFF');
 		$('#flip').prop('disabled',false);
