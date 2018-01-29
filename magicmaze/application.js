@@ -82,7 +82,8 @@ MAGICMAZE.initVoices = function(){
 		if (voice.name == 'Daniel'){ // 'Google UK English Male'
 			window.speechSynthesis.onvoiceschanged = false;
 			MAGICMAZE.SPEECH.voice = voice;
-			MAGICMAZE.SPEECH.talk({'s': 'Welcome to the Magic Maze mall; for all your dungeoneering needs!'});
+			MAGICMAZE.SPEECH.talk({'s': 'Welcome to the Magic Maze mall; for all your adventuring needs!'});
+			$('#start').prop('disabled',false);
 		}
 	});
 }
