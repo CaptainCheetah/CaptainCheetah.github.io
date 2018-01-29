@@ -25,11 +25,11 @@ MAGICMAZE.setColorStatus = function(t){
 	
 	if (timeLeft > 60){
 		newClass = 'safe';
-	} else if (30 < timeLeft <= 60) {
+	} else if (timeLeft > 30) {
 		newClass = 'warning';
-	} else if (10 < timeLeft <= 30) {
+	} else if (timeLeft > 10) {
 		newClass = 'danger';
-	} else if (timeLeft <= 10) {
+	} else {
 		newClass = 'critical';
 	}
 	$('body').removeClass().addClass(newClass);
