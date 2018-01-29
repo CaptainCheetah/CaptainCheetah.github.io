@@ -1,2 +1,3 @@
-# magic-maze
-Timer for Magic Maze
+# Captain Cheetah's web projects
+
+[Timer for Magic Maze](http://captaincheetah.github.io/magicmaze/)
