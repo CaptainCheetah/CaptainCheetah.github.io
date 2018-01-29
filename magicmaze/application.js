@@ -28,7 +28,7 @@ MAGICMAZE.setColorStatus = function(t){
 	console.log(timeLeft > 60);
 	console.log(60 >= timeLeft > 30);
 	console.log(30 >= timeLeft > 10);
-	console.log(10 >= timeLeft > 5);
+	console.log(10 >= timeLeft);
 	
 	if (timeLeft > 60){
 		newClass = 'safe';
@@ -36,7 +36,7 @@ MAGICMAZE.setColorStatus = function(t){
 		newClass = 'warning';
 	} else if (30 >= timeLeft > 10) {
 		newClass = 'danger';
-	} else if (10 >= timeLeft > 5) {
+	} else if (10 >= timeLeft) {
 		newClass = 'critical';
 	}
 	console.log('status is: ' + newClass);
