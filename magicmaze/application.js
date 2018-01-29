@@ -59,6 +59,7 @@ MAGICMAZE.timer = function(params){
 		MAGICMAZE.currentTimer = setInterval(function() {
 			// document.getElementById("timer").innerHTML = ((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0');
 			if (MAGICMAZE.duration == 0) {
+				window.speechSynthesis.cancel();
 				$('#flip').prop('disabled',true);
 				clearInterval(MAGICMAZE.currentTimer);
 				$('#timer').css('color','#F00');
