@@ -34,7 +34,8 @@ MAGICMAZE.setColorStatus = function(t){
 	}else if (10 >= timeLeft > 5){
 		newClass = 'critical';
 	}
-	
+	console.log('status is: ' + newClass);
+	console.log("$('body').removeClass().addClass(newClass);");
 	$('body').removeClass().addClass(newClass);
 }
 
