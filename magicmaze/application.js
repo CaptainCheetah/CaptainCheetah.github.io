@@ -73,19 +73,25 @@ MAGICMAZE.resetTimer = function(){
 	$('#timer').html(((MAGICMAZE.duration - (MAGICMAZE.duration % 60)) / 60).toString().padStart(2, '0') + ":" + (MAGICMAZE.duration % 60).toString().padStart(2, '0'));
 }
 
-$(document).ready(function(){
-  	
-	window.speechSynthesis.onvoiceschanged = function(){
-		$.each(window.speechSynthesis.getVoices(), function(idx, voice){
-			console.log(voice.name);
-			if (voice.name == 'Google UK English Female'){ // 'Google UK English Male'
-				window.speechSynthesis.onvoiceschanged = false;
-				MAGICMAZE.SPEECH.voice = voice;
-				MAGICMAZE.SPEECH.talk({'s': 'Welcome to the Magic Maze mall; for all your dungeoneering needs!'});
-			}
-		});
+MAGICMAZE.initVoices = function(){
+	if(typeof window.speechSynthesis === 'undefined') {
+		return;
 	}
 	
+	$.each(window.speechSynthesis.getVoices(), function(idx, voice){
+		if (voice.name == 'Fiona'){ // 'Google UK English Male'
+			window.speechSynthesis.onvoiceschanged = false;
+			MAGICMAZE.SPEECH.voice = voice;
+			MAGICMAZE.SPEECH.talk({'s': 'Welcome to the Magic Maze mall; for all your dungeoneering needs!'});
+		}
+	});
+}
+
+$(document).ready(function(){
+	MAGICMAZE.initVoices();
+	if (typeof window.speechSynthesis !== 'undefined' && window.speechSynthesis.onvoiceschanged !== undefined) {
+  		window.speechSynthesis.onvoiceschanged = MAGICMAZE.initVoices;
+	}
 	window.onbeforeunload = function(){
 		window.speechSynthesis.cancel();
 	}
