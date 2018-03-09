@@ -1,5 +1,7 @@
 # Web projects
 
-[Timer for Magic Maze](http://captaincheetah.github.io/magicmaze/)
+[Timer for Magic Maze](https://captaincheetah.github.io/magicmaze/)
 
-[Gloomhaven player tools](http://captaincheetah.github.io/gloomhaven/)
+[Gloomhaven player tools](https://captaincheetah.github.io/gloomhaven/)
+
+[Classroom library](https://captaincheetah.github.io/library/)
