@@ -10,16 +10,8 @@ LIBRARY.isAuth = function(){
 
 // cloudant sign in (get cookie)
 LIBRARY.signin = function(u,p){
-  
-  console.log(u);
-  console.log(typeof u);
-  console.log(typeof u === 'String');
-  consle.log(p);
-  console.log(typeof p);
-  console.log(typeof p === 'String');
-  
-  let username = ((u && typeof u === 'String') ? u : false);
-  let password = ((p && typeof p === 'String') ? p : false);
+  let username = ((u && typeof u === 'string') ? u : false);
+  let password = ((p && typeof p === 'string') ? p : false);
 
   if (username && password) {
     let xhrArgs = {
