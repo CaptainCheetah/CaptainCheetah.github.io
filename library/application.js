@@ -27,13 +27,13 @@ LIBRARY.signin = function(u,p){
         name: username,
         password: password
       },
-      done: () => {
+      success: () => {
         console.log('success');
       },
-      fail: () => {
+      error: () => {
         console.log('error');
       },
-      always: () => {
+      complete: () => {
         console.log('complete');
       }
     };
