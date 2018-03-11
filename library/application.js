@@ -15,13 +15,10 @@ LIBRARY.signin = function(u,p){
 
   if (username && password) {
     let xhrArgs = {
-      async: 'true',
-      crossDomain: 'true',
       type: 'POST',
       url: `https://${LIBRARY.cloudantconfig.account}.cloudant.com/_session`,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Cache-Control": "no-cache",
       },
       data: {
         name: username,
