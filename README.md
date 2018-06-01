@@ -5,3 +5,5 @@
 [Gloomhaven player tools](https://captaincheetah.github.io/gloomhaven/)
 
 [Classroom library](https://captaincheetah.github.io/library/)
+
+[Making words](https://captaincheetah.github.io/making-words/)
