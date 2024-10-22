@@ -16,4 +16,7 @@ features:
   - title: Making Words
     details: Elementary spelling activity using text-to-speech and drag-and-drop interface (Chrome only)
     link: https://captaincheetah.github.io/making-words/
+  - title: Dark Fort
+    details: Enter the Dark Fort
+    link: https://captaincheetah.github.io/dark-fort/
 ---
